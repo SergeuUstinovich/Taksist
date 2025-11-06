@@ -1,0 +1,53 @@
+.nav {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 20px;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 575px;
+  padding: 5px 25px;
+  margin: 0 auto;
+
+  .list {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: flex-end;
+    .item {
+      .btn {
+        display: flex;
+        padding: 9px 11px;
+        border-radius: 100%;
+        box-shadow: inset 3px 6px 8px 0 rgba(0, 0, 0, 0.25);
+        background: linear-gradient(
+          146deg,
+          #a8a8a8 0%,
+          #8a8a8a 18.32%,
+          #000 99.82%
+        );
+        .activeSvg path {
+          fill: white;
+        }
+      }
+      .active {
+        background: linear-gradient(146deg, #ffdc71 0%, #ffdc71 100%);
+
+        .activeSvg path {
+          fill: black;
+        }
+      }
+
+      .disabled {
+        opacity: 0.5;
+      }
+    }
+  }
+}
+
+@media (max-width: 360px) {
+  .nav {
+    padding: 10px 10px;
+  }
+}

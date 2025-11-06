@@ -1,0 +1,39 @@
+.container {
+  max-width: 575px;
+  margin: 0 auto;
+  width: 100%;
+  height: 100svh;
+
+  .main {
+    height:100%;
+    // overflow: hidden auto;
+    // padding-bottom: 73px;
+  }
+
+  .footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 10;
+
+    .boxFooter {
+      position: relative;
+      width: 100%;
+      .footerBg {
+        display: flex;
+        width: 100%;
+      }
+    }
+  }
+  .helpBg {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 63px;
+    background: var(--black);
+    z-index: 1;
+  }
+}
+
+
