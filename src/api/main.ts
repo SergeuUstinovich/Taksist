@@ -1,4 +1,5 @@
 import axios from "axios";
+import { validateResponse } from "./validateResponse";
 
 const api_url =
   import.meta.env.MODE === "development"
@@ -26,4 +27,11 @@ export function mainInfo() {
     .get(`/main_page/`)
     .then((response) => response.data)
     // .catch(validateResponse);
+}
+
+export function goToLine() {
+  return api
+    .post(`/go_to_line/`)
+    .then((response) => response.data)
+    .catch(validateResponse);
 }

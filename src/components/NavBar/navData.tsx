@@ -27,6 +27,6 @@ export const navData = [
         id: '4',
         svg: <LeaderboarSvg className={style.activeSvg} />,
         path: '/leaderboar',
-        isDisabled: true,
+        isDisabled: false,
     },
 ]

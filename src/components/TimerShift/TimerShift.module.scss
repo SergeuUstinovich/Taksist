@@ -13,6 +13,17 @@
   color: var(--color-text-four);
   padding: 19px 0;
   border-radius: 10px;
+
+  &:disabled {
+    color: var(--white);
+    border: 1px solid var(--color-text-secondary);
+    background: transparent;
+  }
+
+  .span {
+    font-weight: 600;
+    font-size: 16px;
+  }
 }
 
 .btn.active {
@@ -22,5 +33,68 @@
 
   .svg {
     margin-right: 8px;
+  }
+}
+
+.flipClock {
+  display: inline-flex;
+  font-weight: 500;
+  font-size: 16px;
+  color: var(--color-text-secondary);
+  position: relative;
+  margin-right: 5px;
+}
+
+.separator {
+  padding: 0 2px;
+  color: var(--color-text-secondary);
+}
+
+.digitWrapper {
+  position: relative;
+  display: inline-block;
+  width: 0.7em;
+  height: 1.2em;
+  overflow: hidden;
+  text-align: center;
+}
+
+.digit {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  line-height: 1.2em;
+  transition: transform 0.5s ease, opacity 0.5s ease;
+}
+
+/* Анимации для изменения */
+.flipOut {
+  animation: flipOut 0.45s forwards;
+}
+
+.flipIn {
+  animation: flipIn 0.45s forwards;
+}
+
+@keyframes flipOut {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+}
+
+@keyframes flipIn {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
   }
 }

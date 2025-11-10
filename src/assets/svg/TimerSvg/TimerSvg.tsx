@@ -1,6 +1,7 @@
+import { memo } from "react";
 import { SvgType } from "../../../types/SvgType";
 
-export function TimerSvg({ className }: SvgType) {
+export const TimerSvg = memo(function TimerSvg({ className }: SvgType) {
   return (
     <svg
       className={className}
@@ -16,4 +17,4 @@ export function TimerSvg({ className }: SvgType) {
       />
     </svg>
   );
-}
+});
