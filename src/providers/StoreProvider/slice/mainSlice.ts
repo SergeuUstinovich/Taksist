@@ -9,6 +9,7 @@ export const mainSlice = createSlice({
   reducers: {
     initAuthData: (state, action: PayloadAction<MainType>) => {
       state.mainInfo = action.payload
+      state.offsetServerNow = Date.now() - new Date(action.payload.current_time).getTime();
     },
   },
 })

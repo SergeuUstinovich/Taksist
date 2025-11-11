@@ -6,21 +6,22 @@ import style from "./Home.module.scss";
 import { InfoMain } from "../../components/InfoMain/InfoMain";
 import { TimerShift } from "../../components/TimerShift/TimerShift";
 import { useSelector } from "react-redux";
-import { getMainInfoSelector } from "../../providers/StoreProvider/selectors/getMainInfoSelector";
+import { getMainInfoSelector, getOffsetServerSelector } from "../../providers/StoreProvider/selectors/getMainInfoSelector";
 import { LoaderPage } from "../../ui/Loader/LoaderPage";
 
 function Home() {
   const mainInfo = useSelector(getMainInfoSelector);
+  const offsetServerInfo = useSelector(getOffsetServerSelector);
   const hours = mainInfo?.all_hours_on_line ?? 0;
   return (
     <div className={style.home}>
       <Header title={"Эконом"} text={"Сменить тариф"} svg={<CloseSvg />} />
       <AppImage src={car} />
       <InfoMain maga={100} rybl={50} hour={hours} raiting={"-"} />
-      {mainInfo ? (
+      {mainInfo && offsetServerInfo ? (
         <TimerShift
           active={mainInfo.active}
-          current_time={mainInfo.current_time}
+          offsetServer={offsetServerInfo}
           start_time={mainInfo.start_time}
         />
       ) : (

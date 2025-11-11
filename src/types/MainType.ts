@@ -1,5 +1,6 @@
 export interface MainScheme {
-  mainInfo?: MainType
+  mainInfo?: MainType;
+  offsetServerNow?: number;
 }
 
 export interface MainType {

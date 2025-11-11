@@ -5,18 +5,13 @@ import style from "./NavBar.module.scss";
 import { navData } from "./navData";
 import { useLocation, useNavigate } from "react-router-dom";
 import { memo } from "react";
-import { useQueryClient } from "@tanstack/react-query";
 
 export const NavBar = memo(() => {
   const location = useLocation();
   const navigate = useNavigate();
-  const queryClient = useQueryClient();
   const handleNavigate = (path: string, isDisabled: boolean) => {
     if (!isDisabled) {
       navigate(path);
-      if (path === '/' && location.pathname !== '/') {
-        queryClient.invalidateQueries({ queryKey: ["info"] });
-      }
     } else {
       toast.error('В разработке')
     }

@@ -13,11 +13,11 @@ import { goToLine } from "../../api/main";
 
 interface ServerData {
   active: boolean;
-  current_time: string;
+  offsetServer: number;
   start_time: string | null;
 }
 
-export function TimerShift({ active, current_time, start_time }: ServerData) {
+export function TimerShift({ active, offsetServer, start_time }: ServerData) {
   const [isActive, setIsActive] = useState(active);
   const [display, setDisplay] = useState("00:00");
   const [isButtonDisabled, setIsButtonDisabled] = useState(false);
@@ -40,13 +40,10 @@ export function TimerShift({ active, current_time, start_time }: ServerData) {
 
   useEffect(() => {
     if (!start_time || !active) return;
-
-    const serverNow = new Date(current_time).getTime();
     const start = new Date(start_time).getTime();
-    const offset = Date.now() - serverNow;
 
     const update = () => {
-      const now = Date.now() - offset;
+      const now = Date.now() - offsetServer;
       const diff = Math.floor((now - start) / 1000);
       setDisplay(formatTime(diff));
     };
@@ -54,7 +51,7 @@ export function TimerShift({ active, current_time, start_time }: ServerData) {
     const interval = setInterval(update, 1000);
 
     return () => clearInterval(interval);
-  }, [active, current_time, start_time]);
+  }, [active, offsetServer, start_time]);
 
   useEffect(() => {
     setIsActive(active);
